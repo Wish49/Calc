@@ -13,11 +13,11 @@ public class Main {
         int num1 = Integer.parseInt(parts[0]);
         int num2 = Integer.parseInt(parts[2]);
         if (num1 < 1 || num1 > 10){
-            System.out.println("Вы ввели не правильно!");
+            System.out.println("throws Exception");
             System.exit(0);
         }
         if (num2 < 1 || num2 > 10){
-            System.out.println("Вы ввели не правильно!");
+            System.out.println("throws Exception");
             System.exit(0);
         }
         String operStr = parts[1];
