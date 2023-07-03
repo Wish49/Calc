@@ -23,6 +23,17 @@ public class Main {
         String operStr = parts[1];
         char[] oper= operStr.toCharArray();
         int sum = 0;
+        String str1 = new String(oper);
+        int count = 0;
+        for (int i = 0; i < str1.length(); i++){
+            count++;
+            if ( count > 1){
+                System.out.println("throws Exception");
+                System.exit(0);
+            }
+
+        }
+
         if (oper[0] == '+'){
             sum = num1 + num2;
         }else if (oper[0] == '-') {
