@@ -12,12 +12,16 @@ public class Main {
         String[] parts = str.split(" ");
         int num1 = Integer.parseInt(parts[0]);
         int num2 = Integer.parseInt(parts[2]);
+        if (parts.length > 3){
+            System.out.println("throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
+            System.exit(0);
+        }
         if (num1 < 1 || num1 > 10){
-            System.out.println("throws Exception");
+            System.out.println("throws Exception //т.к. калькулятор моет работать только с числами от 1 до 10");
             System.exit(0);
         }
         if (num2 < 1 || num2 > 10){
-            System.out.println("throws Exception");
+            System.out.println("throws Exception //т.к. калькулятор моет работать только с числами от 1 до 10");
             System.exit(0);
         }
         String operStr = parts[1];
@@ -28,7 +32,7 @@ public class Main {
         for (int i = 0; i < str1.length(); i++){
             count++;
             if ( count > 1){
-                System.out.println("throws Exception");
+                System.out.println("throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
                 System.exit(0);
             }
 
