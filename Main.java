@@ -1,56 +1,44 @@
 import java.util.Scanner;
 
+
 public class Main {
-    static Scanner sc = new Scanner(System.in);
-    public static void main(String[] arg){
-        // char [] exept = new char [3];
-      calc("");
-
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        String result = calc(input);
+        System.out.println(result);
     }
-    public static String calc (String input){
-        String str = sc.nextLine();
-        String[] parts = str.split(" ");
-        int num1 = Integer.parseInt(parts[0]);
-        int num2 = Integer.parseInt(parts[2]);
-        if (parts.length > 3){
-            System.out.println("throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
-            System.exit(0);
-        }
-        if (num1 < 1 || num1 > 10){
-            System.out.println("throws Exception //т.к. калькулятор моет работать только с числами от 1 до 10");
-            System.exit(0);
-        }
-        if (num2 < 1 || num2 > 10){
-            System.out.println("throws Exception //т.к. калькулятор моет работать только с числами от 1 до 10");
-            System.exit(0);
-        }
-        String operStr = parts[1];
-        char[] oper= operStr.toCharArray();
-        int sum = 0;
-        String str1 = new String(oper);
-        int count = 0;
-        for (int i = 0; i < str1.length(); i++){
-            count++;
-            if ( count > 1){
-                System.out.println("throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
-                System.exit(0);
-            }
 
+    public static String calc(String input) {
+        String[] data = input.split(" ");
+        if (data.length !=3) {
+            throw new IllegalArgumentException("throws Exception //На ввод принимается два целых числа от 1 до 10 и один оператор (+, -, /, *) разделенные пробелом\nПРИМЕР: 10 + 10");
         }
-
-        if (oper[0] == '+'){
-            sum = num1 + num2;
-        }else if (oper[0] == '-') {
-            sum = num1 - num2;
-        } else if (oper[0] == '*') {
-            sum = num1 * num2;
-        } else if (oper[0] == '/') {
-            sum = num1 / num2;
+        int a = Integer.parseInt(data[0]);
+        if (a < 1 || a > 10) {
+            throw new IllegalArgumentException("throws Exception //Числа должны быть от 1 до 10");
         }
-        System.out.println(sum);
-        String str2 = String.valueOf(sum);
-
-
-        return str2;
+        int b = Integer.parseInt(data[2]);
+        if (b < 1 || b > 10) {
+            throw new IllegalArgumentException("throws Exception //Числа должны быть от 1 до 10");
+        }
+        int result;
+        switch (data[1]) {
+            case "+":
+                result = a + b;
+                break;
+            case "-":
+                result = a - b;
+                break;
+            case "*":
+                result = a * b;
+                break;
+            case "/":
+                result = a / b;
+                break;
+            default:
+                throw new IllegalArgumentException("throws Exception //На ввод принимается два целых числа от 1 до 10 и один оператор (+, -, /, *) разделенные пробелом\nПРИМЕР: 10 + 10");
+        }
+        return String.valueOf(result);
     }
 }
